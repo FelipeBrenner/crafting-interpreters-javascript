@@ -1,0 +1,25 @@
+{
+  "name": "expressions-language",
+  "version": "1.0.0",
+  "description": "Language expression parser in node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paradigmas-da-programacao/expressions-language.git"
+  },
+  "keywords": [
+    "expression",
+    "language",
+    "interpreter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paradigmas-da-programacao/expressions-language/issues"
+  },
+  "homepage": "https://github.com/paradigmas-da-programacao/expressions-language#readme",
+  "type": "module"
+}
