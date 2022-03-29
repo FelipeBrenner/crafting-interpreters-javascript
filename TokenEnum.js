@@ -23,6 +23,8 @@ export class TokenEnum {
   static END_OF_LINE = new TokenEnum("\n");
 
   static STRING_DELIMITER = new TokenEnum("'");
+  static FLOAT_DELIMITER = new TokenEnum(".");
+  static NUMBER = new TokenEnum("NUMBER");
 
   constructor(value, expected) {
     this.value = value;
