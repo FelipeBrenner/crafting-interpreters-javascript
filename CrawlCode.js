@@ -41,13 +41,13 @@ export class CrawlCode {
             case TokenEnum.DIVIDE.value:
                 this.addToken(TokenEnum.DIVIDE);
                 break;
-            case TokenEnum.EQUAL.value:
-                this.addToken(this.matchNext(TokenEnum.COMPARISON.expected)
-                     ? TokenEnum.COMPARISON : TokenEnum.EQUAL );
+            case TokenEnum.ASSIGN.value:
+                this.addToken(this.matchNext(TokenEnum.EQUALS.expected)
+                     ? TokenEnum.EQUALS : TokenEnum.ASSIGN );
                 break;
-            case TokenEnum.NEGATION.value:
-                this.addToken(this.matchNext(TokenEnum.DIFFERENT.expected)
-                     ? TokenEnum.DIFFERENT : TokenEnum.NEGATION );
+            case TokenEnum.NOT.value:
+                this.addToken(this.matchNext(TokenEnum.NOT_EQUALS.expected)
+                     ? TokenEnum.NOT_EQUALS : TokenEnum.NOT );
                 break;
             case TokenEnum.LESS_THAN.value:
                 this.addToken(this.matchNext(TokenEnum.LESS_THAN_OR_EQUAL.expected)

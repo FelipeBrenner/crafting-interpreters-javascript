@@ -5,13 +5,13 @@ export class TokenEnum {
     static PLUS = new TokenEnum('+');
     static MULTIPLY = new TokenEnum('*');
     static DIVIDE = new TokenEnum("/");
-    static EQUAL = new TokenEnum("=");
-    static NEGATION = new TokenEnum("!");
+    static ASSIGN = new TokenEnum("=");
+    static NOT = new TokenEnum("!");
     static LESS_THAN = new TokenEnum("<");
     static GREATER_THAN = new TokenEnum(">");
     
-    static COMPARISON = new TokenEnum("=", "=");
-    static DIFFERENT = new TokenEnum("!", "=");
+    static EQUALS = new TokenEnum("=", "=");
+    static NOT_EQUALS = new TokenEnum("!", "=");
     static GREATER_THAN_OR_EQUAL = new TokenEnum(">", "=");
     static LESS_THAN_OR_EQUAL = new TokenEnum("<", "=");
 
