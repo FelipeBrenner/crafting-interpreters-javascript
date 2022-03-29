@@ -15,12 +15,17 @@ export class TokenEnum {
     static GREATER_THAN_OR_EQUAL = new TokenEnum(">", "=");
     static LESS_THAN_OR_EQUAL = new TokenEnum("<", "=");
 
-    static END_OF_LINE = new TokenEnum("\n")
+  static EQUAL = new TokenEnum("=", "=");
+  static NOT_EQUAL = new TokenEnum("!", "=");
+  static GREATER_THAN_OR_EQUAL = new TokenEnum(">", "=");
+  static LESS_THAN_OR_EQUAL = new TokenEnum("<", "=");
 
-    static STRING_DELIMITER = new TokenEnum("'")
+  static END_OF_LINE = new TokenEnum("\n");
 
-    constructor (value, expected) {
-        this.value = value;
-        this.expected = expected;
-    }
+  static STRING_DELIMITER = new TokenEnum("'");
+
+  constructor(value, expected) {
+    this.value = value;
+    this.expected = expected;
+  }
 }
