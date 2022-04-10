@@ -10,14 +10,13 @@ export class CrawlCode {
     this.code = code;
   }
 
-  crawl() {
-    return new Promise((resolve) => {
-      while (!this.isEndOfExpression()) {
-        this.startIndex = this.currentCharIndex;
-        this.scanForTokens();
-      }
-      resolve();
-    });
+  async crawl() {
+    while (!this.isEndOfExpression()) {
+      this.startIndex = this.currentCharIndex;
+      this.scanForTokens();
+    }
+
+    return this.tokens;
   }
 
   scanForTokens() {
@@ -118,7 +117,7 @@ export class CrawlCode {
       this.startIndex + 1,
       this.currentCharIndex - 1
     );
-    this.addToken(TokenEnum.STRING_DELIMITER, value);
+    this.addToken(TokenEnum.STRING, value);
   }
 
   getCharAtCurrent() {
