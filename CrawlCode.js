@@ -40,6 +40,9 @@ export class CrawlCode {
       case TokenEnum.DIVIDE.value:
         this.addToken(TokenEnum.DIVIDE);
         break;
+      case TokenEnum.EXPONENT.value:
+        this.addToken(TokenEnum.EXPONENT);
+        break;
       case TokenEnum.ASSIGN.value:
         this.addToken(
           this.matchNext(TokenEnum.EQUAL.expected)

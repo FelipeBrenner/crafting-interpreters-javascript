@@ -5,6 +5,7 @@ export class TokenEnum {
   static PLUS = new TokenEnum("+");
   static MULTIPLY = new TokenEnum("*");
   static DIVIDE = new TokenEnum("/");
+  static EXPONENT = new TokenEnum("^");
   static ASSIGN = new TokenEnum("=");
   static NOT = new TokenEnum("!");
   static LESS_THAN = new TokenEnum("<");

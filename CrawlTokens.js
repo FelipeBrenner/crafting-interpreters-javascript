@@ -8,15 +8,74 @@ export class CrawlTokens {
   }
 
   async crawl() {
+    return this.expression();
+  }
+
+  expression() {
     return this.equality();
   }
 
   // Binary expressions
 
   equality() {
-    let expr = this.primary();
+    let expr = this.comparation();
 
     while (this.matchPattern(TokenEnum.NOT_EQUAL, TokenEnum.EQUAL)) {
+      const { operator } = this.previousToken();
+      const right = this.comparation();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  comparation() {
+    let expr = this.additionSubtraction();
+
+    while (
+      this.matchPattern(
+        TokenEnum.GREATER_THAN,
+        TokenEnum.GREATER_THAN_OR_EQUAL,
+        TokenEnum.LESS_THAN,
+        TokenEnum.LESS_THAN_OR_EQUAL
+      )
+    ) {
+      const { operator } = this.previousToken();
+      const right = this.additionSubtraction();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  additionSubtraction() {
+    let expr = this.multiplicationDivision();
+
+    while (this.matchPattern(TokenEnum.PLUS, TokenEnum.SUBTRACT)) {
+      const { operator } = this.previousToken();
+      const right = this.multiplicationDivision();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  multiplicationDivision() {
+    let expr = this.potentiation();
+
+    while (this.matchPattern(TokenEnum.MULTIPLY, TokenEnum.DIVIDE)) {
+      const { operator } = this.previousToken();
+      const right = this.potentiation();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
+
+  potentiation() {
+    let expr = this.primary();
+
+    while (this.matchPattern(TokenEnum.EXPONENT)) {
       const { operator } = this.previousToken();
       const right = this.primary();
       expr = new TreeExpr.Binary(expr, operator, right);
