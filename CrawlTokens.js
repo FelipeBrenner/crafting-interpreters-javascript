@@ -73,18 +73,32 @@ export class CrawlTokens {
   }
 
   potentiation() {
-    let expr = this.primary();
+    let expr = this.unary();
 
     while (this.matchPattern(TokenEnum.EXPONENT)) {
       const { operator } = this.previousToken();
-      const right = this.primary();
+      const right = this.unary();
       expr = new TreeExpr.Binary(expr, operator, right);
     }
 
     return expr;
   }
 
-  primary() {
+  // Unary expressions
+
+  unary() {
+    if (this.matchPattern(TokenEnum.NOT, TokenEnum.SUBTRACT)) {
+      const { operator } = this.previousToken();
+      const right = this.unary();
+      return new TreeExpr.Unary(operator, right);
+    }
+
+    return this.literals();
+  }
+
+  // Literals
+
+  literals() {
     if (this.matchPattern(TokenEnum.NUMBER, TokenEnum.STRING)) {
       const { value } = this.previousToken();
       return new TreeExpr.Literal(value);
