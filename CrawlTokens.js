@@ -51,7 +51,7 @@ export class CrawlTokens {
   additionSubtraction() {
     let expr = this.multiplicationDivision();
 
-    while (this.matchPattern(TokenEnum.PLUS, TokenEnum.SUBTRACT)) {
+    while (this.matchPattern(TokenEnum.PLUS, TokenEnum.MINUS)) {
       const { operator } = this.previousToken();
       const right = this.multiplicationDivision();
       expr = new TreeExpr.Binary(expr, operator, right);
@@ -87,7 +87,7 @@ export class CrawlTokens {
   // Unary expressions
 
   unary() {
-    if (this.matchPattern(TokenEnum.NOT, TokenEnum.SUBTRACT)) {
+    if (this.matchPattern(TokenEnum.NOT, TokenEnum.MINUS)) {
       const { operator } = this.previousToken();
       const right = this.unary();
       return new TreeExpr.Unary(operator, right);

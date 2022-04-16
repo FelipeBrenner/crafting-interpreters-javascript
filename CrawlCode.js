@@ -43,8 +43,8 @@ export class CrawlCode {
       case TokenEnum.CLOSE_PAREN.value:
         this.addToken(TokenEnum.CLOSE_PAREN);
         break;
-      case TokenEnum.SUBTRACT.value:
-        this.addToken(TokenEnum.SUBTRACT);
+      case TokenEnum.MINUS.value:
+        this.addToken(TokenEnum.MINUS);
         break;
       case TokenEnum.PLUS.value:
         this.addToken(TokenEnum.PLUS);
