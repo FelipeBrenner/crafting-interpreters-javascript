@@ -38,12 +38,22 @@ export class EvaluateTree {
                 return leftHandValue >= rightHandValue;
             case TokenEnum.LESS_THAN_OR_EQUAL.final:
                 return leftHandValue <= rightHandValue;
+            case TokenEnum.EXPONENT.final:
+                return Math.pow(leftHandValue, rightHandValue);
+            case TokenEnum.MULTIPLY.final:
+                return leftHandValue * rightHandValue;
+            case TokenEnum.DIVIDE.final:
+                return leftHandValue / rightHandValue;
+            case TokenEnum.PLUS.final:
+                return leftHandValue + rightHandValue;
+            case TokenEnum.MINUS.final:
+                return leftHandValue - rightHandValue;
+
         }
     }
 
     unaryEvaluation(operation) {
         const rightHandValue = this.evaluate(operation.right);
-
         switch(operation.operator) {
             case TokenEnum.NOT.final:
                 return !rightHandValue;
