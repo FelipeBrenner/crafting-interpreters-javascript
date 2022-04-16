@@ -99,13 +99,15 @@ export class CrawlTokens {
   // Literals
 
   literals() {
+    if (this.matchPattern(TokenEnum.TRUE)) return new TreeExpr.Literal(true);
+    if (this.matchPattern(TokenEnum.FALSE)) return new TreeExpr.Literal(false);
     if (this.matchPattern(TokenEnum.NUMBER, TokenEnum.STRING)) {
       const { value } = this.previousToken();
       return new TreeExpr.Literal(value);
     }
 
     if (this.matchPattern(TokenEnum.OPEN_PAREN)) {
-      const expr = this.crawl();
+      const expr = this.expression();
       this.consume(TokenEnum.CLOSE_PAREN, "Expect ')' after expression.");
       return new TreeExpr.Grouping(expr);
     }

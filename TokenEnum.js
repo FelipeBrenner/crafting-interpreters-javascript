@@ -28,6 +28,12 @@ export class TokenEnum {
   static FLOAT_DELIMITER = new TokenEnum(".");
   static NUMBER = new TokenEnum("NUMBER");
 
+  static FALSE = new TokenEnum("false");
+  static TRUE = new TokenEnum("true");
+  static AND = new TokenEnum("and");
+  static OR = new TokenEnum("or");
+  static XOR = new TokenEnum("xor");
+
   constructor(value, expected) {
     this.value = value;
     this.expected = expected;

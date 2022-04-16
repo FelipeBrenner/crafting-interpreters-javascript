@@ -1,6 +1,14 @@
 import { Token } from "./Token.js";
 import { TokenEnum } from "./TokenEnum.js";
 
+const reservedWords = [
+  TokenEnum.TRUE,
+  TokenEnum.FALSE,
+  TokenEnum.AND,
+  TokenEnum.OR,
+  TokenEnum.XOR,
+];
+
 export class CrawlCode {
   constructor(code) {
     this.tokens = [];
@@ -85,6 +93,8 @@ export class CrawlCode {
       default:
         if (this.isDigit(currentChar)) {
           this.handleNumber();
+        } else if (this.isAlpha(currentChar)) {
+          this.handleReservedWords();
         } else {
           console.error(currentChar + " - Unknown token");
         }
@@ -96,6 +106,34 @@ export class CrawlCode {
 
   isDigit(digit) {
     return digit >= "0" && digit <= "9";
+  }
+
+  isAlpha(alpha) {
+    return (
+      (alpha >= "a" && alpha <= "z") ||
+      (alpha >= "A" && alpha <= "Z") ||
+      alpha === "_"
+    );
+  }
+
+  handleNumber() {
+    while (this.isDigit(this.getCharAtCurrent())) {
+      this.nextCharacter();
+    }
+
+    if (
+      this.getCharAtCurrent() == TokenEnum.FLOAT_DELIMITER.value &&
+      this.isDigit(this.matchNext("[0-9]"))
+    ) {
+      this.nextCharacter();
+      while (this.isDigit(this.getCharAtCurrent())) {
+        this.nextCharacter();
+      }
+    }
+
+    const value = this.code.substring(this.startIndex, this.currentCharIndex);
+
+    this.addToken(TokenEnum.NUMBER, parseFloat(value));
   }
 
   handleString() {
@@ -121,6 +159,16 @@ export class CrawlCode {
       this.currentCharIndex - 1
     );
     this.addToken(TokenEnum.STRING, value);
+  }
+
+  handleReservedWords() {
+    while (this.isAlpha(this.getCharAtCurrent())) {
+      this.nextCharacter();
+    }
+
+    const text = this.code.slice(this.startIndex, this.currentCharIndex);
+    let type = reservedWords.find((word) => word.value === text);
+    this.addToken(type);
   }
 
   getCharAtCurrent() {
@@ -152,25 +200,5 @@ export class CrawlCode {
 
   isEndOfExpression() {
     return this.currentCharIndex >= this.code.length;
-  }
-
-  handleNumber() {
-    while (this.isDigit(this.getCharAtCurrent())) {
-      this.nextCharacter();
-    }
-
-    if (
-      this.getCharAtCurrent() == TokenEnum.FLOAT_DELIMITER.value &&
-      this.isDigit(this.matchNext("[0-9]"))
-    ) {
-      this.nextCharacter();
-      while (this.isDigit(this.getCharAtCurrent())) {
-        this.nextCharacter();
-      }
-    }
-
-    const value = this.code.substring(this.startIndex, this.currentCharIndex);
-
-    this.addToken(TokenEnum.NUMBER, parseFloat(value));
   }
 }
