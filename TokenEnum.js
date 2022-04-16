@@ -48,6 +48,6 @@ export class TokenEnum {
   constructor(value, expected) {
     this.value = value;
     this.expected = expected;
-    this.final = value + expected || "";
+    this.final = value + (!!expected ? expected : "");
   }
 }
