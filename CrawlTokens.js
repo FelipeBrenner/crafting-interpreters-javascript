@@ -12,10 +12,22 @@ export class CrawlTokens {
   }
 
   expression() {
-    return this.equality();
+    return this.logical();
   }
 
   // Binary expressions
+
+  logical() {
+    let expr = this.equality();
+
+    while (this.matchPattern(TokenEnum.AND, TokenEnum.OR, TokenEnum.XOR)) {
+      const { operator } = this.previousToken();
+      const right = this.equality();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
 
   equality() {
     let expr = this.comparation();

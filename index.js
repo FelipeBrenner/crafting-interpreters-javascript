@@ -3,7 +3,7 @@ import { CrawlTokens } from "./CrawlTokens.js";
 import { EvaluateTree } from "./EvaluateTree.js";
 import { TreePrinter } from "./TreePrinter.js";
 
-const testExpression = "(2 + 1) > 2 == !true";
+const testExpression = "2>1 xor 2<1";
 
 async function main() {
   console.log("Expression: " + testExpression);
@@ -21,7 +21,6 @@ async function main() {
 
   const evaluator = new EvaluateTree(tree);
   console.log(evaluator.init());
-
 }
 
 main();

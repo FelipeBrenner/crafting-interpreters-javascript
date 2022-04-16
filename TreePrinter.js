@@ -16,6 +16,7 @@ export class TreePrinter {
   }
 
   visitLiteralTreeExpr(expr) {
+    if (expr.value === true || expr.value === false) return `(${expr.value})`;
     if (!expr.value) return "null";
     return expr.value.toString();
   }
