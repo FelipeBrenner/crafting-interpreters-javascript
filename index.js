@@ -1,5 +1,6 @@
 import { CrawlCode } from "./CrawlCode.js";
 import { CrawlTokens } from "./CrawlTokens.js";
+import { EvaluateTree } from "./EvaluateTree.js";
 import { TreePrinter } from "./TreePrinter.js";
 
 const testExpression = "(2 + 1) > 2 == !true";
@@ -14,9 +15,13 @@ async function main() {
   const crawlTokens = new CrawlTokens(tokens);
   const tree = await crawlTokens.crawl();
 
-  console.log("Tree Oject:");
+  console.log("Tree Object:");
   console.log(tree);
   console.log("AST Tree: " + new TreePrinter(tree).print());
+
+  const evaluator = new EvaluateTree(tree);
+  console.log(evaluator.init());
+
 }
 
 main();
