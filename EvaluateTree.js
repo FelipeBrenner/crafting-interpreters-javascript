@@ -18,7 +18,13 @@ export class EvaluateTree {
                 return this.unaryEvaluation(operation);
             case operation instanceof TreeExpr.Binary:
                 return this.binaryEvaluation(operation);
+            case operation instanceof TreeExpr.Grouping:
+                return this.groupingEvaluation(operation);
         }
+    }
+
+    groupingEvaluation(operation) {
+        return this.evaluate(operation.expr)
     }
 
     binaryEvaluation(operation) {
