@@ -7,6 +7,13 @@ const reservedWords = [
   TokenEnum.AND,
   TokenEnum.OR,
   TokenEnum.XOR,
+  TokenEnum.INPUT,
+  TokenEnum.OUTPUT,
+  TokenEnum.IF,
+  TokenEnum.MAX,
+  TokenEnum.MIN,
+  TokenEnum.AVG,
+  TokenEnum.SUM,
 ];
 
 export class CrawlCode {
@@ -171,6 +178,7 @@ export class CrawlCode {
 
     const text = this.code.slice(this.startCharIndex, this.currentCharIndex);
     let type = reservedWords.find((word) => word.value === text);
+    if (!type) type = TokenEnum.VARIABLE;
     this.addToken(type);
   }
 

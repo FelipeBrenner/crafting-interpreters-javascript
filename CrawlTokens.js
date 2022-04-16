@@ -105,6 +105,10 @@ export class CrawlTokens {
       const { value } = this.previousToken();
       return new TreeExpr.Literal(value);
     }
+    if (this.matchPattern(TokenEnum.VARIABLE)) {
+      const { operator } = this.previousToken();
+      return new TreeExpr.Literal(operator);
+    }
 
     if (this.matchPattern(TokenEnum.OPEN_PAREN)) {
       const expr = this.expression();
@@ -115,11 +119,13 @@ export class CrawlTokens {
 
   // Auxiliary expressions
 
-  consume(type) {
+  consume(type, message) {
     if (this.typeCheck(type)) return this.nextToken();
+
+    throw new SyntaxError(message);
   }
 
-  // Checks if the current token is one of these types
+  // Checks if the current token is one of these types, and advance
   matchPattern(...types) {
     for (const type of types) {
       if (this.typeCheck(type)) {
