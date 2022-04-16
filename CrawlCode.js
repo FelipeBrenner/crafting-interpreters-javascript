@@ -13,14 +13,14 @@ export class CrawlCode {
   constructor(code) {
     this.tokens = [];
     this.currentCharIndex = 0;
-    this.startIndex = 0;
+    this.startCharIndex = 0;
     this.line = 1;
     this.code = code;
   }
 
   async crawl() {
     while (!this.isEndOfExpression()) {
-      this.startIndex = this.currentCharIndex;
+      this.startCharIndex = this.currentCharIndex;
       this.scanForTokens();
     }
 
@@ -131,7 +131,10 @@ export class CrawlCode {
       }
     }
 
-    const value = this.code.substring(this.startIndex, this.currentCharIndex);
+    const value = this.code.substring(
+      this.startCharIndex,
+      this.currentCharIndex
+    );
 
     this.addToken(TokenEnum.NUMBER, parseFloat(value));
   }
@@ -155,7 +158,7 @@ export class CrawlCode {
     this.currentCharIndex++;
 
     const value = this.code.substring(
-      this.startIndex + 1,
+      this.startCharIndex + 1,
       this.currentCharIndex - 1
     );
     this.addToken(TokenEnum.STRING, value);
@@ -166,7 +169,7 @@ export class CrawlCode {
       this.nextCharacter();
     }
 
-    const text = this.code.slice(this.startIndex, this.currentCharIndex);
+    const text = this.code.slice(this.startCharIndex, this.currentCharIndex);
     let type = reservedWords.find((word) => word.value === text);
     this.addToken(type);
   }
@@ -194,7 +197,10 @@ export class CrawlCode {
   }
 
   addToken(tokenEnum, value) {
-    const text = this.code.substring(this.startIndex, this.currentCharIndex);
+    const text = this.code.substring(
+      this.startCharIndex,
+      this.currentCharIndex
+    );
     this.tokens.push(new Token(tokenEnum, text, this.line, value));
   }
 

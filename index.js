@@ -2,8 +2,7 @@ import { CrawlCode } from "./CrawlCode.js";
 import { CrawlTokens } from "./CrawlTokens.js";
 import { TreePrinter } from "./TreePrinter.js";
 
-// const testExpression = "2^3 + 4 > -3 * 1";
-const testExpression = "2 > 3 == true";
+const testExpression = "2^4 > -3 * (2 + 1)";
 
 async function main() {
   console.log("Expression: " + testExpression);
