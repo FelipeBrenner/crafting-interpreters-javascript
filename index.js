@@ -3,7 +3,7 @@ import { CrawlTokens } from "./CrawlTokens.js";
 import { EvaluateTree } from "./EvaluateTree.js";
 import { TreePrinter } from "./TreePrinter.js";
 
-const testExpression = "2>1 xor 2<1";
+const testExpression = "variable = 2";
 
 async function main() {
   console.log("Expression: " + testExpression);

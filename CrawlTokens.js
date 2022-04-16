@@ -12,10 +12,22 @@ export class CrawlTokens {
   }
 
   expression() {
-    return this.logical();
+    return this.assign();
   }
 
   // Binary expressions
+
+  assign() {
+    let expr = this.logical();
+
+    while (this.matchPattern(TokenEnum.ASSIGN)) {
+      const { operator } = this.previousToken();
+      const right = this.logical();
+      expr = new TreeExpr.Binary(expr, operator, right);
+    }
+
+    return expr;
+  }
 
   logical() {
     let expr = this.equality();
