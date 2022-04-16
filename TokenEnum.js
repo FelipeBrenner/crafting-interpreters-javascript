@@ -13,7 +13,7 @@ export class TokenEnum {
 
   // Unary expressions
   static NOT = new TokenEnum("!");
-  static SUBTRACT = new TokenEnum("-");
+  static MINUS = new TokenEnum("-");
 
   // Binary expressions
   static EXPONENT = new TokenEnum("^");
