@@ -1,4 +1,10 @@
 export class TreeExpr {
+  static Variable = class extends TreeExpr {
+    constructor(value) {
+      super();
+      this.value = value;
+    }
+  }
   static Binary = class extends TreeExpr {
     constructor(left, operator, right) {
       super();
@@ -7,6 +13,12 @@ export class TreeExpr {
       this.right = right;
     }
   };
+
+  static Assign = class extends this.Binary {
+    constructor(left, operator, right) {
+      super(left, operator, right);
+    }
+  }
 
   static Unary = class extends TreeExpr {
     constructor(operator, right) {

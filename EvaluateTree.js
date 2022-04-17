@@ -2,25 +2,42 @@ import { TokenEnum } from "./TokenEnum.js";
 import { TreeExpr } from "./TreeExpr.js";
 
 export class EvaluateTree {
-  constructor(treeExpr) {
-    this.tree = treeExpr;
+  constructor(treesExpr) {
+    this.state = new Map();
+    this.trees = treesExpr;
   }
 
   init() {
-    return this.evaluate(this.tree);
+    let lastLine;
+    for (const tree of this.trees) {
+      lastLine = this.evaluate(tree);
+    }
+    return lastLine;
   }
 
   evaluate(operation) {
     switch (true) {
       case operation instanceof TreeExpr.Literal:
         return operation.value;
+      case operation instanceof TreeExpr.Variable:
+        if (!this.state.has(operation.value)) {
+          throw new Error("Variable does not exist on this scope.")
+        }
+        return this.state.get(operation.value);
       case operation instanceof TreeExpr.Unary:
         return this.unaryEvaluation(operation);
+      case operation instanceof TreeExpr.Assign:
+        return this.assignEvaluation(operation);
       case operation instanceof TreeExpr.Binary:
         return this.binaryEvaluation(operation);
       case operation instanceof TreeExpr.Grouping:
         return this.groupingEvaluation(operation);
     }
+  }
+
+  assignEvaluation(operation) {
+    const rightHandValue = this.evaluate(operation.right);
+    this.state.set(operation.left.value, rightHandValue);
   }
 
   groupingEvaluation(operation) {

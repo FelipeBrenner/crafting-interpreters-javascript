@@ -23,7 +23,7 @@ export class CrawlTokens {
     while (this.matchPattern(TokenEnum.ASSIGN)) {
       const { operator } = this.previousToken();
       const right = this.logical();
-      expr = new TreeExpr.Binary(expr, operator, right);
+      expr = new TreeExpr.Assign(expr, operator, right);
     }
 
     return expr;
@@ -131,7 +131,7 @@ export class CrawlTokens {
     }
     if (this.matchPattern(TokenEnum.VARIABLE)) {
       const { operator } = this.previousToken();
-      return new TreeExpr.Literal(operator);
+      return new TreeExpr.Variable(operator);
     }
 
     if (this.matchPattern(TokenEnum.OPEN_PAREN)) {
