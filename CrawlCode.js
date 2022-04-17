@@ -209,7 +209,11 @@ export class CrawlCode {
       this.startCharIndex,
       this.currentCharIndex
     );
-    this.tokens.push(new Token(tokenEnum, text, this.line, value));
+    const lineIndex = this.line - 1;
+    if (!this.tokens[lineIndex]) {
+      this.tokens[lineIndex] = [];
+    }
+    this.tokens[lineIndex].push(new Token(tokenEnum, text, this.line, value));
   }
 
   isEndOfExpression() {
