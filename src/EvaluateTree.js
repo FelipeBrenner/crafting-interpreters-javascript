@@ -17,13 +17,13 @@ export class EvaluateTree {
 
   evaluate(operation) {
     switch (true) {
-      case operation instanceof TreeExpr.Literal:
-        return operation.value;
       case operation instanceof TreeExpr.Variable:
         if (!this.state.has(operation.value)) {
-          throw new Error("Variable does not exist on this scope.")
+          throw new Error("Variable does not exist on this scope.");
         }
         return this.state.get(operation.value);
+      case operation instanceof TreeExpr.Literal:
+        return operation.value;
       case operation instanceof TreeExpr.Unary:
         return this.unaryEvaluation(operation);
       case operation instanceof TreeExpr.Assign:
