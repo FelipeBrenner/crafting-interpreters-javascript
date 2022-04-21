@@ -1,0 +1,3 @@
+a = true and false
+b = true or false
+a xor !b
