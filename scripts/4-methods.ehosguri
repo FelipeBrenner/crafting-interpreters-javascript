@@ -1,2 +1,4 @@
 a = max 1 4 6 6 2
-output a
+b = min a 2 3
+c = sum a b
+output avg a b c
