@@ -22,5 +22,8 @@
     "url": "https://github.com/paradigmas-da-programacao/expressions-language/issues"
   },
   "homepage": "https://github.com/paradigmas-da-programacao/expressions-language#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.0.1"
+  }
 }
