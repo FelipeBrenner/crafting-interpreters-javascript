@@ -40,7 +40,7 @@ async function main() {
     }
     console.log(chalk.bgCyan.black("\nEvaluation:"));
     const evaluator = new EvaluateTree(trees);
-    console.log(evaluator.init());
+    evaluator.init();
     const endExecution = new Date();
     console.log(
       chalk.bgRed.black.underline(

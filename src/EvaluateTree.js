@@ -39,9 +39,9 @@ export class EvaluateTree {
   }
 
   methodEvaluation(operation) {
-    const rightHandValue = this.evaluate(operation.right);
+    const params = operation.params.map((param) => this.evaluate(param));
     const method = methodMap.get(operation.operator);
-    return method(rightHandValue);
+    return method(params);
   }
 
   assignEvaluation(operation) {

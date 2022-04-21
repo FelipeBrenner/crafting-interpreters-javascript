@@ -25,6 +25,10 @@ export class TreePrinter {
     return this.parenthesise(expr.operator, expr.right);
   }
 
+  visitMethodTreeExpr(expr) {
+    return this.parenthesise(expr.operator, ...expr.params);
+  }
+
   parenthesise(name, ...exprs) {
     const expressionData = exprs.map((expr) => expr.accept(this)).join(" ");
     return `(${name} ${expressionData})`;

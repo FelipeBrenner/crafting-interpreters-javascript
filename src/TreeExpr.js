@@ -29,9 +29,11 @@ export class TreeExpr {
     }
   };
 
-  static Method = class extends this.Unary {
-    constructor(operator, right) {
-      super(operator, right);
+  static Method = class extends TreeExpr {
+    constructor(operator, params) {
+      super();
+      this.operator = operator;
+      this.params = params;
     }
   };
 
@@ -56,5 +58,7 @@ export class TreeExpr {
       return visitor.visitLiteralTreeExpr(this);
     if (this instanceof TreeExpr.Binary)
       return visitor.visitBinaryTreeExpr(this);
+    if (this instanceof TreeExpr.Method)
+      return visitor.visitMethodTreeExpr(this);
   }
 }

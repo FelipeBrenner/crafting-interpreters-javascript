@@ -33,6 +33,7 @@ export class TokenEnum {
 
   // Reserved words - methods
   static OUTPUT = new TokenEnum("output");
+  static MAX = new TokenEnum("max");
 
   static VARIABLE = new TokenEnum("VARIABLE");
 
@@ -52,6 +53,7 @@ export const reservedWords = [
   TokenEnum.OR,
   TokenEnum.XOR,
   TokenEnum.OUTPUT,
+  TokenEnum.MAX,
 ];
 
-export const methodNames = [TokenEnum.OUTPUT];
+export const methodNames = [TokenEnum.OUTPUT, TokenEnum.MAX];

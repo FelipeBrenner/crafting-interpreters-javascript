@@ -132,8 +132,16 @@ export class CrawlTokens {
 
     if (this.matchPattern(...methodNames)) {
       const { operator } = this.previousToken();
-      const rightToken = this.expression();
-      return new TreeExpr.Method(operator, rightToken);
+
+      let nextParam = this.expression();
+      const params = [];
+
+      while (!!nextParam) {
+        params.push(nextParam);
+        nextParam = this.expression();
+      }
+
+      return new TreeExpr.Method(operator, params);
     }
 
     if (this.matchPattern(TokenEnum.VARIABLE)) {
