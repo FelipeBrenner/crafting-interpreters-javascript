@@ -27,6 +27,9 @@ export class TokenEnum {
   static NOT_EQUAL = new TokenEnum("!", "=");
   static GREATER_THAN_OR_EQUAL = new TokenEnum(">", "=");
   static LESS_THAN_OR_EQUAL = new TokenEnum("<", "=");
+  static AND = new TokenEnum("and");
+  static OR = new TokenEnum("or");
+  static XOR = new TokenEnum("xor");
 
   // Reserved words
   static INPUT = new TokenEnum("input");
@@ -38,10 +41,6 @@ export class TokenEnum {
   static SUM = new TokenEnum("sum");
 
   static VARIABLE = new TokenEnum("VARIABLE");
-
-  static AND = new TokenEnum("and");
-  static OR = new TokenEnum("or");
-  static XOR = new TokenEnum("xor");
 
   static END_OF_LINE = new TokenEnum("\n");
 
