@@ -1,4 +1,4 @@
-import { TokenEnum } from "./TokenEnum.js";
+import { methodNames, TokenEnum } from "./TokenEnum.js";
 import { TreeExpr } from "./TreeExpr.js";
 
 export class CrawlTokens {
@@ -128,6 +128,11 @@ export class CrawlTokens {
     if (this.matchPattern(TokenEnum.NUMBER, TokenEnum.STRING)) {
       const { value } = this.previousToken();
       return new TreeExpr.Literal(value);
+    }
+    if (this.matchPattern(...methodNames)) {
+      const { operator } = this.previousToken();
+      const rightToken = this.unary();
+      return new TreeExpr.Method(operator, rightToken);
     }
     if (this.matchPattern(TokenEnum.VARIABLE)) {
       const { operator } = this.previousToken();
