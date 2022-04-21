@@ -129,11 +129,13 @@ export class CrawlTokens {
       const { value } = this.previousToken();
       return new TreeExpr.Literal(value);
     }
+
     if (this.matchPattern(...methodNames)) {
       const { operator } = this.previousToken();
-      const rightToken = this.unary();
+      const rightToken = this.expression();
       return new TreeExpr.Method(operator, rightToken);
     }
+
     if (this.matchPattern(TokenEnum.VARIABLE)) {
       const { operator } = this.previousToken();
       return new TreeExpr.Variable(operator);

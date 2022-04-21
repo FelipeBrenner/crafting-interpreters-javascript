@@ -16,7 +16,7 @@ export class TreePrinter {
   }
 
   visitLiteralTreeExpr(expr) {
-    if (expr.value === true || expr.value === false) return `(${expr.value})`;
+    if (expr.value === false) return "false";
     if (!expr.value) return "null";
     return expr.value.toString();
   }
@@ -27,6 +27,6 @@ export class TreePrinter {
 
   parenthesise(name, ...exprs) {
     const expressionData = exprs.map((expr) => expr.accept(this)).join(" ");
-    return `(${name}${expressionData})`;
+    return `(${name} ${expressionData})`;
   }
 }

@@ -19,7 +19,7 @@ export class EvaluateTree {
   evaluate(operation) {
     switch (true) {
       case operation instanceof TreeExpr.Method:
-        this.methodEvaluation(operation)
+        this.methodEvaluation(operation);
         break;
       case operation instanceof TreeExpr.Variable:
         if (!this.state.has(operation.value)) {
@@ -41,7 +41,7 @@ export class EvaluateTree {
 
   methodEvaluation(operation) {
     const rightHandValue = this.evaluate(operation.right);
-    const method = methodMap.get(operation.value);
+    const method = methodMap.get(operation.operator);
     method(rightHandValue);
   }
 

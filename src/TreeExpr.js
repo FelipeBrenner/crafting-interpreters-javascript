@@ -29,13 +29,11 @@ export class TreeExpr {
     }
   };
 
-  static Method = class extends this.Literal {
-    constructor(value, right) {
-      super();
-      this.value = value;
-      this.right = right;
+  static Method = class extends this.Unary {
+    constructor(operator, right) {
+      super(operator, right);
     }
-  }
+  };
 
   static Variable = class extends this.Literal {
     constructor(value) {
