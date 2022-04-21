@@ -9,9 +9,8 @@ async function main() {
   let fileList = fs.readdirSync("scripts");
 
   for (const index in fileList) {
-
     const startExecution = new Date();
-    console.log(chalk.bgCyan.black(`running ${fileList[index]}`))
+    console.log(chalk.bgCyan.black(`running ${fileList[index]}`));
     const code = fs.readFileSync("scripts/" + fileList[index], {
       encoding: "utf8",
     });
@@ -20,7 +19,7 @@ async function main() {
     console.log(code);
     const crawlCode = new CrawlCode(code);
     const tokens = await crawlCode.crawl();
-    
+
     const trees = [];
     for (const token of tokens) {
       const crawlTokens = new CrawlTokens(token);
@@ -32,13 +31,19 @@ async function main() {
     for (const tree of trees) {
       console.log(new TreePrinter(tree).print());
     }
-    console.log(chalk.bgCyan.black("\n\Evaluation:"));
+    console.log(chalk.bgCyan.black("\nEvaluation:"));
     const evaluator = new EvaluateTree(trees);
     console.log(evaluator.init());
-    const endExecution = new Date()
-    console.log(chalk.bgRed.black.underline(`\nend of execution ${fileList[index]} in ${endExecution.getTime() - startExecution.getTime()}ms`))
-    
-    console.log(chalk.cyan("------------------------------------"))
+    const endExecution = new Date();
+    console.log(
+      chalk.bgRed.black.underline(
+        `\nend of execution ${fileList[index]} in ${
+          endExecution.getTime() - startExecution.getTime()
+        }ms`
+      )
+    );
+
+    console.log(chalk.cyan("------------------------------------"));
   }
 }
 

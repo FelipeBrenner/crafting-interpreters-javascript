@@ -19,8 +19,7 @@ export class EvaluateTree {
   evaluate(operation) {
     switch (true) {
       case operation instanceof TreeExpr.Method:
-        this.methodEvaluation(operation);
-        break;
+        return this.methodEvaluation(operation);
       case operation instanceof TreeExpr.Variable:
         if (!this.state.has(operation.value)) {
           throw new Error("Variable does not exist on this scope.");
@@ -42,7 +41,7 @@ export class EvaluateTree {
   methodEvaluation(operation) {
     const rightHandValue = this.evaluate(operation.right);
     const method = methodMap.get(operation.operator);
-    method(rightHandValue);
+    return method(rightHandValue);
   }
 
   assignEvaluation(operation) {

@@ -1,20 +1,5 @@
 import { Token } from "./Token.js";
-import { TokenEnum } from "./TokenEnum.js";
-
-const reservedWords = [
-  TokenEnum.TRUE,
-  TokenEnum.FALSE,
-  TokenEnum.AND,
-  TokenEnum.OR,
-  TokenEnum.XOR,
-  TokenEnum.INPUT,
-  TokenEnum.OUTPUT,
-  TokenEnum.IF,
-  TokenEnum.MAX,
-  TokenEnum.MIN,
-  TokenEnum.AVG,
-  TokenEnum.SUM,
-];
+import { reservedWords, TokenEnum } from "./TokenEnum.js";
 
 export class CrawlCode {
   constructor(code) {
