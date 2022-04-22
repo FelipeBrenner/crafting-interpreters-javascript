@@ -56,4 +56,4 @@ Classe que, para cada operação da árvore sintática construída, seguindo a o
 
 ### `MethodMap.js`
 
-Classe para realizar a operação de métodos de qualquer palavra reservada que quizesse ser definida, mas que no caso só foi implementado OUTPUT.
+Arquivo que contém as funcionalidades de operações de métodos de palavras reservadas.

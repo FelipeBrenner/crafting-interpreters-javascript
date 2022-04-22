@@ -27,16 +27,16 @@ export class TokenEnum {
   static NOT_EQUAL = new TokenEnum("!", "=");
   static GREATER_THAN_OR_EQUAL = new TokenEnum(">", "=");
   static LESS_THAN_OR_EQUAL = new TokenEnum("<", "=");
-  static AND = new TokenEnum("and");
-  static OR = new TokenEnum("or");
-  static XOR = new TokenEnum("xor");
+  static AND = new TokenEnum("tambem");
+  static OR = new TokenEnum("alterna");
+  static XOR = new TokenEnum("xorabb");
 
   // Reserved words - methods
-  static OUTPUT = new TokenEnum("output");
-  static MAX = new TokenEnum("max");
-  static MIN = new TokenEnum("min");
-  static AVG = new TokenEnum("avg");
-  static SUM = new TokenEnum("sum");
+  static OUTPUT = new TokenEnum("chora");
+  static MAX = new TokenEnum("chamaomaior");
+  static MIN = new TokenEnum("chamaomenor");
+  static AVG = new TokenEnum("mediazinhacpx");
+  static SUM = new TokenEnum("somaaaa");
 
   static VARIABLE = new TokenEnum("VARIABLE");
 

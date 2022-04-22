@@ -1,4 +1,4 @@
-a = max 1 4 6 6 2
-b = min a 2 3
-c = sum a b
-output avg a b c
+a = chamaomaior 1 4 6 6 2
+b = chamaomenor a 2 3
+c = somaaaa a b
+chora mediazinhacpx a b c
