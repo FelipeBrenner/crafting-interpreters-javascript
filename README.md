@@ -1,6 +1,6 @@
 ## 💻 Projeto
 
-Projeto desenvolvido para cadeira de Paradigmas de Programação, da graduação de Ciência da Computação da Unisinos. Consiste em um interpretador de uma linguagem de expressões, foi baseado nesta literatura [Crafting Interpreters](https://craftinginterpreters.com/contents.html) e codado em JavaScript.
+Projeto desenvolvido para cadeira de Paradigmas de Programação, da graduação de Ciência da Computação da Unisinos. Consiste em um interpretador de uma linguagem de expressões, foi baseado nesta literatura [Crafting Interpreters](https://craftinginterpreters.com/) e codado em JavaScript.
 
 ## ⚙ Execução
 
@@ -57,3 +57,7 @@ Classe que, para cada operação da árvore sintática construída, seguindo a o
 ### `MethodMap.js`
 
 Arquivo que contém as funcionalidades de operações de métodos de palavras reservadas.
+
+## 📹 Apresentação
+
+[![Watch the video](https://img.youtube.com/vi/n76ujwdBVzs/maxresdefault.jpg)](https://youtu.be/n76ujwdBVzs)
